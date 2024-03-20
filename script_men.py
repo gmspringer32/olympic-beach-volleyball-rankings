@@ -7,7 +7,7 @@ start_time = time.time()
 
 # %%
 df_men = pd.read_excel(
-    "OlympicRankings.xlsx", sheet_name="March men's Olympic standings"
+    "OlympicRankings2.xlsx", sheet_name="March men's Olympic standings"
 )
 
 
@@ -16,7 +16,6 @@ df_men.fillna(0, inplace=True)
 df_men.drop(df_men.index[-2:], inplace=True)
 
 tournaments_left = [
-    "Elite16 Doha, Qatar",
     "Challenge Recife, Brazil",
     "Challenge Saquarema, Brazil",
     "Challenge Guadalajara, Mexico",
@@ -37,43 +36,7 @@ df_men.reset_index(inplace=True, drop=True)
 
 
 # %%
-tournament_cols = [
-    "Final Evet 2024",
-    "NORCECA Champs",
-    "Nuvali Challenge",
-    "Joao Pessoa Elite16",
-    "Chiang Mai Challenge",
-    "Haikou Challenege",
-    "Goa Challenge",
-    "World Championships",
-    "Paris Elite16",
-    "Hamburg Elite16",
-    "European Championships",
-    "Montreal Elite16",
-    "Edmonton Challenge",
-    "Asian Continental Cup",
-    "South American Cup",
-    "Espinho Challenge",
-    "Gstaad Elite16",
-    "Jurmala Challenge",
-    "Ostrava Elite 16",
-    "Uberlandia Elite 16",
-    "Saquarema Challenge",
-    "Itapema Challenge",
-    "Tepic Elite 16",
-    "La Paz Challenge",
-    "Doha Elite 16",
-    "Elite16 Doha, Qatar",
-    "Challenge Recife, Brazil",
-    "Challenge Saquarema, Brazil",
-    "Challenge Guadalajara, Mexico",
-    "Elite16 Tepic, Mexico",
-    "Challenge Xiamen, China",
-    "Elite16 Natal, Brazil",
-    "Elite16 Espinho, Portugal",
-    "Challenge Stare Jablonki, Poland",
-    "Elite 16 Ostrava, Czech Republic",
-]
+tournament_cols = df_men.drop(["Team", "Country", "Total "], axis=1).columns
 
 
 point_elite = [
